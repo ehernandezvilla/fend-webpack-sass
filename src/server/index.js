@@ -4,11 +4,11 @@ const mockAPIResponse = require('./mockAPI.js')
 var bodyParser = require('body-parser')
 var cors = require('cors')
 
-var json = {
-    'title': 'test json response',
-    'message': 'this is a message',
-    'time': 'now'
-}
+// var json = {
+//     'title': 'test json response',
+//     'message': 'this is a message',
+//     'time': 'now'
+// }
 
 const app = express()
 app.use(cors())

@@ -26,7 +26,7 @@ function handleSubmit(event) {
 
 
     // Make the POST request
-    fetch('http://https://example-api-express.onrender.com/nameapi', { // localhost:8081
+    fetch('https://example-api-express.onrender.com/nameapi', { // localhost:8081
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

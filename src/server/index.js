@@ -4,6 +4,7 @@ const mockAPIResponse = require('./mockAPI.js')
 var bodyParser = require('body-parser')
 var cors = require('cors')
 const fetch = require('node-fetch');
+require('dotenv').config();
 
 
 // var json = {
@@ -31,7 +32,7 @@ app.use(bodyParser.urlencoded({
 
 app.use(express.static('dist'))
 
-console.log(JSON.stringify(mockAPIResponse))
+// console.log(JSON.stringify(mockAPIResponse))
 
 app.get('/', function (req, res) {
     res.sendFile('dist/index.html')
@@ -42,7 +43,7 @@ app.get('/test', function (req, res) {
 })
 
 app.post('/nameapi', async (req, res) => {
-    const response = await fetch('https://api.nameapi.org/rest/v5.3/parser/personnameparser?apiKey=b00d98b772b318a7a542470251ca28fd-user1', {
+    const response = await fetch(`https://api.nameapi.org/rest/v5.3/parser/personnameparser?apiKey=${process.env.API_KEY}`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

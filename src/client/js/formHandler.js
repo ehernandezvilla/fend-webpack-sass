@@ -26,7 +26,7 @@ function handleSubmit(event) {
 
 
     // Make the POST request
-    const apiEndpoint = process.env.NODE_ENV === 'production' ? 'https://example-api-express.onrender.com/nameapi' : 'http://localhost:8081/nameapi';
+    const apiEndpoint = process.env.NODE_ENV === 'production' ? 'https://example-api-express.onrender.com/nameapi' : 'http://localhost:8081/nameapi'; //change in case of localhost
 
     fetch(apiEndpoint, {
         method: 'POST',

@@ -29,7 +29,7 @@ app.get('/test', function (req, res) {
 
 app.post('/nameapi', async (req, res) => {
     try {
-        const response = await fetch(`https://api.nameapi.org/rest/v5.3/parser/personnameparser?apiKey=${process.env.API_KEY}`, {
+        const response = await fetch(`https://api.nameapi.org/rest/v5.3/parser/personnameparser?apiKey=${process.env.API_KEY}`, { //change it for localhost
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

@@ -9,9 +9,17 @@ require('dotenv').config();
 const app = express();
 
 const corsOptions = {
-    origin: ['http://localhost:8080', 'https://example-api-express.onrender.com'],
-    optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+    origin: function (origin, callback) {
+        const allowedOrigins = ['http://localhost:8081', 'https://example-api-express.onrender.com','http://localhost:8080'];
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    },
+    optionsSuccessStatus: 200
 };
+
 
 app.use(cors(corsOptions));
 

@@ -24,26 +24,31 @@ function handleSubmit(event) {
         }
     }
 
-
     // Make the POST request
     const apiEndpoint = process.env.NODE_ENV === 'production' ? 'https://example-api-express.onrender.com/nameapi' : 'http://localhost:8081/nameapi';
 
     fetch(apiEndpoint, {
         method: 'POST',
+        mode: 'cors',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify(requestBody)
     })
-    .then(res => res.json())
-    .then(data=> {
-        //Extract the gender and confidence from the bestMatch
+    .then(res => {
+        if (!res.ok) {
+            throw new Error('Network response was not ok');
+        }
+        return res.json();
+    })
+    .then(data => {
+        // Extract the gender and confidence from the bestMatch
         const gender = data.bestMatch.parsedPerson.gender.gender;
         const confidence = data.bestMatch.parsedPerson.gender.confidence;
-        // Display the extraxcted data in the results div
+        // Display the extracted data in the results div
         document.getElementById('results').innerHTML = `Gender: ${gender} <br> Confidence: ${confidence}`;
     })
-    .catch(error=> {
+    .catch(error => {
         console.error("There was an error with the fetch operation:", error);
     });
 }

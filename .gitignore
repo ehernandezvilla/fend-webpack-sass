@@ -3,3 +3,4 @@ node_modules
 src/server/.env
 .env
 .vscode
+fend-webpack-sass.code-workspace
